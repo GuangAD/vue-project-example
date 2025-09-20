@@ -4,10 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:vite-v2": "pnpm --filter vue2-project-example-vite dev",
+    "dev:vite-v3": "pnpm --filter vue3-project-example dev",
+    "dev:cli-v2.6": "pnpm --filter vue2-project-example-2.6 serve",
+    "dev:cli-v2.7": "pnpm --filter vue2-project-example-2.7 serve"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.8.0"
+  "packageManager": "pnpm@10.8.0",
+  "dependencies": {
+    "fastest-json-copy": "^1.0.1"
+  }
 }

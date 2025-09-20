@@ -1,20 +1,40 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script>
+import TimeScheduleAlone from '../../../simple-vue-time-schedule/TimeScheduleAloneVue3.vue'
+
+export default {
+  components: {
+    TimeScheduleAlone
+  },
+  data() {
+    return {
+      text: '08:00~12:00',
+      timeRange: ['08:00~12:00'],
+      disableRange: ["09:00~11:00", "14:00~17:00"]
+    }
+  },
+  methods: {
+    handlerInputChange(val) {
+      console.log("🚀 ~ handlerInputChange ~ val:", val.target.value)
+      this.timeRange = [val.target.value]
+    },
+    handlerRangeChange(range) {
+      if (range && range.length) {
+        this.text = range[0]
+      } else {
+        this.text = ''
+      }
+    }
+  },
+}
 </script>
 
+
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div>
+    <input type="text" v-model="text" @change="handlerInputChange">
+    <TimeScheduleAlone canOverlap :model-value="timeRange" :disabled-time-range="disableRange"
+      @change="handlerRangeChange" />
+  </div>
 </template>
 
 <style scoped>
