@@ -6,8 +6,8 @@
   "scripts": {
     "dev:vite-v2": "pnpm --filter vue2-project-example-vite dev",
     "dev:vite-v3": "pnpm --filter vue3-project-example dev",
-    "dev:cli-v2.6": "pnpm --filter vue2-project-example-2.6 serve",
-    "dev:cli-v2.7": "pnpm --filter vue2-project-example-2.7 serve"
+    "dev:cli-v2.6": "pnpm --filter vue2-project-example-2.6x serve",
+    "dev:cli-v2.7": "pnpm --filter vue2-project-example-2.7x serve"
   },
   "keywords": [],
   "author": "",
