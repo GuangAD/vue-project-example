@@ -1,6 +1,6 @@
-import './assets/main.css'
-
 import { createApp } from 'vue'
 import App from './App.vue'
+import { TimeSchedulePlugin } from 'simple-vue-time-schedule/v3'
 
-createApp(App).mount('#app')
+import 'simple-vue-time-schedule/v3/style'
+createApp(App).use(TimeSchedulePlugin).mount('#app')

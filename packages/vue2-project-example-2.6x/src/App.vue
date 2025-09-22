@@ -1,67 +1,46 @@
-<script>
-import TimeScheduleAlone from '../../../simple-vue-time-schedule/TimeScheduleAlone.vue'
-
-export default {
-  components: {
-    TimeScheduleAlone
-  },
-  data() {
-    return {
-      text: '08:00~12:00',
-      timeRange: ['08:00~12:00'],
-      disableRange: ["09:00~11:00", "14:00~17:00"]
-    }
-  },
-  methods: {
-    handlerInputChange(val) {
-      console.log("🚀 ~ handlerInputChange ~ val:", val.target.value)
-      this.timeRange = [val.target.value]
-    },
-    handlerRangeChange(range) {
-      if (range && range.length) {
-        this.text = range[0]
-      } else {
-        this.text = ''
-      }
-    }
-  },
-}
-</script>
-
-
+<!-- eslint-disable vue/no-deprecated-v-bind-sync -->
 <template>
-  <div>
-    <input type="text" v-model="text" @change="handlerInputChange">
-    <TimeScheduleAlone canOverlap :model-value="timeRange" :disabled-time-range="disableRange"
-      @change="handlerRangeChange" />
+  <div id="app">
+    <input type="text" v-model="timeRange" @change="handleChange" />
+    {{ selected }}
+    <time-schedule :modelValue.sync="selected" show-checkbox :date-list="dateList"
+      :disabled-time-range="disabledTimeRange" @change="handleRangeChange">
+    </time-schedule>
   </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<script lang="ts">
+
+export default {
+  name: 'App',
+
+  data() {
+    return {
+      dateList: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
+      timeRange: '00:00~03:00',
+      selected: [['00:00~03:00'], ['00:00~24:00'], ['00:00~23:30']],
+      selected2: [[], [0, 1, 2], [], [], [], [], []],
+      disabledTimeRange: [['05:00~08:00']]
+    }
+  },
+  methods: {
+    handleChange() {
+      this.selected = [[this.timeRange]]
+    },
+    handleRangeChange() {
+      this.timeRange = this.selected[0][0]
+    }
+  }
 }
+</script>
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
