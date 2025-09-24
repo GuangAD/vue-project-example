@@ -14,6 +14,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.8.0",
   "dependencies": {
-    "fastest-json-copy": "^1.0.1"
+    "fastest-json-copy": "^1.0.1",
+    "simple-vue-time-schedule": "link:C:/Users/EDY/AppData/Local/pnpm/global/5/node_modules/simple-vue-time-schedule"
   }
 }

@@ -1,2 +1,5 @@
 packages:
   - packages/*
+
+overrides:
+  simple-vue-time-schedule: link:C:/Users/EDY/AppData/Local/pnpm/global/5/node_modules/simple-vue-time-schedule
